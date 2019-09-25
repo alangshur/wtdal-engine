@@ -2,8 +2,7 @@
 
 ## Dependencies
 
-The following dependencies are required for coportalling and developing
-this project:
+The following dependencies are required for developing this project:
 
 - GNU g++ compiler: `$ brew install gcc`
 - GNU make: `$ brew install make`
