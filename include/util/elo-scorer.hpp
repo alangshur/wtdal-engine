@@ -1,3 +1,4 @@
+#pragma once
 #ifndef ELO_SCORER_H
 #define ELO_SCORER_H
 

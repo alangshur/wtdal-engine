@@ -1,3 +1,4 @@
+#pragma once
 #ifndef INGESTION_EXECUTOR_H
 #define INGESTION_EXECUTOR_H
 

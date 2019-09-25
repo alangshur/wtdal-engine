@@ -3,7 +3,8 @@ using namespace std;
 
 EngineMatchPortal::EngineMatchPortal(EngineMatchExecutor& executor,
     uint16_t port) : executor(executor), server(port) {
-    this->logger.log_message("EngineMatchPortal", "Initializing match portal.");
+    this->logger.log_message("EngineMatchPortal", "Initializing match portal"
+        " on port " + to_string(port) + ".");
 }
 
 EngineMatchPortal::~EngineMatchPortal() {}

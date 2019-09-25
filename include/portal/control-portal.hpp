@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CONTROL_PORTAL_H
 #define CONTROL_PORTAL_H
 

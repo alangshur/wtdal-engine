@@ -3,7 +3,8 @@ using namespace std;
 
 EngineControlPortal::EngineControlPortal(EngineControlExecutor& executor,
     uint16_t port) : executor(executor), server(port) {
-    this->logger.log_message("EngineControlPortal", "Initializing control portal.");
+    this->logger.log_message("EngineControlPortal", "Initializing control portal" 
+        " on port " + to_string(port) + ".");
 }
 
 EngineControlPortal::~EngineControlPortal() {}

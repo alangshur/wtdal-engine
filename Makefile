@@ -3,9 +3,7 @@ CXXFLAGS = -std=c++17 -Wall
 OPTIMIZATION = -O3
 INCLUDE = -Iinclude
 MODULES = $(shell find src -name *.cpp)
-NAME = mind-engine
-TEST_MODULES = test-framework.cpp
-TEST_NAME = mind-engine-test
+NAME = wtdal-engine
 
 all: $(NAME)
 

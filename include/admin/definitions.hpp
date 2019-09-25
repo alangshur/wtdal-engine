@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
@@ -23,7 +24,7 @@ typedef enum {
     The ShutdownThread class is a simple parent
     class used to specify simple static shutdown
     constructs that will be shared by the engine
-    worker and all the engine thread classes.
+    orchestrator and all the engine thread classes.
 */
 class ShutdownThread {
     public:

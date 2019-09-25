@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CONTRIBUTION_STORE_H
 #define CONTRIBUTION_STORE_H
 

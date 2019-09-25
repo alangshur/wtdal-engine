@@ -1,3 +1,4 @@
+#pragma once
 #ifndef MATCH_EXECUTOR_H
 #define MATCH_EXECUTOR_H
 

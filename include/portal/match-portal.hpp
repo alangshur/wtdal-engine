@@ -1,3 +1,4 @@
+#pragma once
 #ifndef MATCH_PORTAL_H
 #define MATCH_PORTAL_H
 

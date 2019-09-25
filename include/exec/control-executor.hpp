@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CONTROL_EXEC_H
 #define CONTROL_EXEC_H
 

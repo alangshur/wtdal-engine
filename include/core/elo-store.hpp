@@ -1,3 +1,4 @@
+#pragma once
 #ifndef ELO_STORE_H
 #define ELO_STORE_H
 
@@ -5,7 +6,7 @@
 #include "util/rating-list.hpp"
 #include "admin/definitions.hpp"
 
-const uint32_t ELO_STORE_SIZE = 10000;
+const uint32_t ELO_STORE_SIZE = 1000000;
 
 /*
     The EngineEloStore class is a linear vector-based data structure

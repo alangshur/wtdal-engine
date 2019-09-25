@@ -1,5 +1,6 @@
-#ifndef WORKER_H
-#define WORKER_H
+#pragma once
+#ifndef ORCHESTRATOR_H
+#define ORCHESTRATOR_H
 
 #include <thread>
 #include <vector>
@@ -15,15 +16,15 @@
 #include "admin/definitions.hpp"
 
 /*
-    The EngineWorker class is the central 
-    orchestration unit for a single worker process. It manages
+    The EngineOrchestrator class is the central 
+    orchestration unit for a single orchestrator process. It manages
     the creation of all the individual modules, as well
     as assigning them to threads and monitoring these 
     child threads.
 */
-class EngineWorker : private ShutdownThread {
+class EngineOrchestrator : private ShutdownThread {
     public:
-        ~EngineWorker();
+        ~EngineOrchestrator();
         void execute();
 
     private:

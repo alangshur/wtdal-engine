@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RATING_LIST_H
 #define RATING_LIST_H
 

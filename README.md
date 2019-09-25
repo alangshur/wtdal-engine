@@ -7,7 +7,7 @@ this project:
 
 - GNU g++ compiler: `$ brew install gcc`
 - GNU make: `$ brew install make`
-- Boost libraries: `$ brew install boost`  
+- Boost libraries: `$ brew install boost`
 
 ## Building
 

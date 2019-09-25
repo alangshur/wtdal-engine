@@ -4,7 +4,8 @@ using namespace std;
 
 EngineIngestionPortal::EngineIngestionPortal(EngineIngestionExecutor& executor,
     uint16_t port) : executor(executor), server(port) {
-    this->logger.log_message("EngineIngestionPortal", "Initializing ingestion portal.");
+    this->logger.log_message("EngineIngestionPortal", "Initializing ingestion portal"
+        " on port " + to_string(port) + ".");
 }
 
 EngineIngestionPortal::~EngineIngestionPortal() {}

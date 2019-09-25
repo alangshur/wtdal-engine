@@ -1,3 +1,4 @@
+#pragma once
 #ifndef INGESTION_PORTAL_H
 #define INGESTION_PORTAL_H
 
