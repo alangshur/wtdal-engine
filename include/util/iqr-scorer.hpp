@@ -48,6 +48,7 @@ class IQRScorer {
         uint32_t size();
         enum outlier_type is_outlier(double value);
         uint32_t fetch_random_sample();
+        uint32_t fetch_random_sample_linear();
         void print_quartile_set();
 
     private:

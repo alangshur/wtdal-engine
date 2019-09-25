@@ -94,7 +94,7 @@ bool EngineContributionStore::verify_contribution(cid contribution_id) {
 
 cid EngineContributionStore::attempt_fetch_match_item() {
     unique_lock<mutex> lk(this->elo_bucket_scorer_mutex);
-    uint32_t rand_bucket = this->elo_bucket_scorer.fetch_random_sample();
+    uint32_t rand_bucket = this->elo_bucket_scorer.fetch_random_sample_linear();
     return this->elo_store.cycle_front_contribution(rand_bucket);
 }
 

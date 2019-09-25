@@ -197,13 +197,47 @@ uint32_t IQRScorer::fetch_random_sample() {
     // account for non-composite median
     if (!this->median.is_composite_quartile && 
         !(rand() % this->sample_count)) return this->median.value_f;
-
+ 
     // execute composite pipeline
     else {
         multiset<uint32_t>::iterator it;
         uint32_t it_jump = rand() % (this->sample_count / 2);    
         if (rand() % 2) it = begin(this->first_quartile_set);
         else it = begin(this->third_quartile_set);
+        advance(it, it_jump);
+        return *it;
+    }
+}
+
+uint32_t IQRScorer::fetch_random_sample_linear() {
+    if (!this->sample_count)
+        throw runtime_error("Cannot find sample to be removed");
+
+    // select random number linearly 
+    uint32_t rand_n_1 = rand() % this->sample_count, 
+        rand_n_2 = rand() % this->sample_count;
+    uint32_t rand_n = ((rand_n_1 > rand_n_2) ? rand_n_1 : rand_n_2);
+
+    // account for non-composite median
+    if (!this->median.is_composite_quartile && 
+        (rand_n == (this->sample_count / 2))) 
+        return this->median.value_f;
+
+    // execute composite pipeline
+    else {
+        uint32_t it_jump;
+        multiset<uint32_t>::iterator it;
+        if (rand_n < (this->sample_count / 2)) {
+            it = begin(this->first_quartile_set);
+            it_jump = rand_n;
+        }
+        else {
+            it = begin(this->third_quartile_set);
+            it_jump = rand_n - (this->sample_count / 2) 
+                - !this->median.is_composite_quartile;
+        }
+
+        // advance iterator
         advance(it, it_jump);
         return *it;
     }
