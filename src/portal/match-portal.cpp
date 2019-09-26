@@ -11,10 +11,12 @@ EngineMatchPortal::~EngineMatchPortal() {}
 
 void EngineMatchPortal::run() {
     try {
+
+        // accept server connection
+        this->server.accept_connection();
         while (true) {
 
             // read new request
-            this->server.accept_connection();
             if (this->shutdown_flag) break;
             match_packet_t match_req;
             this->server.read_packet(match_req);
@@ -35,8 +37,10 @@ void EngineMatchPortal::run() {
                 "Received match request and fetched " + 
                 to_string(match_count) + " match(es).");
             this->server.write_packet(match_res);
-            this->server.close_connection();
         }
+
+        // close server connection
+        this->server.close_connection();
     }
     catch(exception& e) {
         this->server.force_close_connection();

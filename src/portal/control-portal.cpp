@@ -11,10 +11,12 @@ EngineControlPortal::~EngineControlPortal() {}
 
 void EngineControlPortal::run() {
     try {
+
+        // accept server connection
+        this->server.accept_connection();
         while (true) {
 
             // read new request
-            this->server.accept_connection();
             if (this->shutdown_flag) break;
             control_packet_t control_req;
             this->server.read_packet(control_req);
@@ -55,8 +57,10 @@ void EngineControlPortal::run() {
 
             // write response
             this->server.write_packet(control_res);
-            this->server.close_connection();
         }
+
+        // close server connection
+        this->server.close_connection();
     }
     catch(exception& e) {
         this->server.force_close_connection();
