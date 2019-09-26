@@ -14,6 +14,10 @@ void EngineMatchPortal::run() {
 
         // accept server connection
         this->server.accept_connection();
+        this->logger.log_message("EngineMatchPortal", 
+            "Connected to valid client.");
+
+        // loop read/write
         while (true) {
 
             // read new request

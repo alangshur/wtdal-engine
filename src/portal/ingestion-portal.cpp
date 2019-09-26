@@ -15,6 +15,10 @@ void EngineIngestionPortal::run() {
 
         // accept new connection
         this->server.accept_connection();
+        this->logger.log_message("EngineIngestionPortal", 
+            "Connected to valid client.");
+        
+        // loop read/write
         while (true) {
 
             // read new request

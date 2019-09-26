@@ -14,6 +14,10 @@ void EngineControlPortal::run() {
 
         // accept server connection
         this->server.accept_connection();
+        this->logger.log_message("EngineControlPortal", 
+            "Connected to valid client.");
+
+        // loop read/write 
         while (true) {
 
             // read new request
