@@ -17,9 +17,8 @@ typedef struct {
     packet_directive_t directive;
 } control_request_t;
 
-const uint32_t NUM_CONTROL_RES_PACKETS = 5;
 typedef union {
-    outlier_t outliers[NUM_CONTROL_RES_PACKETS];
+    outlier_t outlier;
     packet_directive_t directive;
 } control_response_t;
 

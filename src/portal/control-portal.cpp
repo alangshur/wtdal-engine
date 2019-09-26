@@ -48,15 +48,9 @@ void EngineControlPortal::run() {
             else {
                 
                 // build response
-                uint32_t outlier_count = 0;
-                for (size_t i = 0; i < NUM_CONTROL_RES_PACKETS; i++) {
-                    outlier_t outlier = this->executor.fetch_outlier();
-                    if (outlier.type != No) outlier_count++;
-                    control_res.response.outliers[i] = outlier;
-                }   
+                control_res.response.outlier = this->executor.fetch_outlier();
                 this->logger.log_message("EngineControlPortal", "Received "
-                "outlier request and fetched " + to_string(outlier_count) 
-                + " outlier(s).");
+                    "outlier request and fetched outlier.");
             }
 
             // write response

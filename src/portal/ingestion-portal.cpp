@@ -27,17 +27,10 @@ void EngineIngestionPortal::run() {
             this->server.read_packet(ingestion_req);
 
             // enqueue ingestions
-            uint32_t ingestion_count = 0;
-            for (size_t i = 0; i < NUM_INGESTION_REQ_PACKETS; i++) {
-                if (ingestion_req.request[i].type != IEmpty) {
-                    this->executor.add_ingestion(ingestion_req.request[i]);
-                    ingestion_count++;
-                }
-            }
+            this->executor.add_ingestion(ingestion_req.request);
             this->logger.log_message("EngineIngestionPortal", "Received "
-                "ingestion request and added " + to_string(ingestion_count) 
-                + " ingestion(s).");
-
+                "ingestion request and added ingestion.");
+                
             // write response
             ingestion_packet_t ingestion_res;
             ingestion_res.response = ACK;

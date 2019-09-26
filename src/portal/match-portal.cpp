@@ -29,17 +29,11 @@ void EngineMatchPortal::run() {
 
             // fetch matches
             match_packet_t match_res;
-            uint32_t match_count = 0;
-            for (size_t i = 0; i < NUM_MATCH_RES_PACKETS; i++) {
-                match_t match = this->executor.fetch_match();
-                if (match.type != MEmpty) match_count++;
-                match_res.response[i] = match;
-            }
+            match_res.response = this->executor.fetch_match();
+            this->logger.log_message("EngineMatchPortal", 
+                "Received match request and fetched match.");
 
             // write response
-            this->logger.log_message("EngineMatchPortal", 
-                "Received match request and fetched " + 
-                to_string(match_count) + " match(es).");
             this->server.write_packet(match_res);
         }
 
