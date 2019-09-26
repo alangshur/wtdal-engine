@@ -24,6 +24,7 @@ class TCPServer {
         void force_close_connection() noexcept;
         void close_acceptor();
         void stop_context();
+        void shutdown_socket();
 
     private:
         boost::asio::io_context io_context;
@@ -113,6 +114,13 @@ void TCPServer<T>::close_acceptor() {
 template <typename T>
 void TCPServer<T>::stop_context() {
     this->io_context.stop();
+}
+
+template <typename T>
+void TCPServer<T>::shutdown_socket() {
+    boost::system::error_code error_code;
+    this->socket_ptr->shutdown(boost::asio::ip::tcp::socket::shutdown_both, 
+        error_code);
 }
 
 #endif

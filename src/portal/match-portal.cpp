@@ -57,6 +57,8 @@ void EngineMatchPortal::shutdown() {
     // trigger shutdown
     this->shutdown_flag = true;
     this->server.close_acceptor();
+    this->server.stop_context();
+    this->server.shutdown_socket();
 
     // wait for shutdown
     this->wait_shutdown();

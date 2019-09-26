@@ -2,7 +2,7 @@
 using namespace std;
  
 EngineControlExecutor::EngineControlExecutor(EngineContributionStore& 
-    contribution_store) : contribution_store(contribution_store) {
+    contribution_store) : contribution_store(contribution_store), outlier_queue_size(0) {
     this->logger.log_message("EngineControlExecutor", "Initializing control executor.");
 }
 
@@ -18,7 +18,7 @@ void EngineControlExecutor::run() {
             outlier_t outlier = this->contribution_store.fetch_outlier();
             unique_lock<mutex> lk(this->outlier_queue_mutex);
             this->outlier_queue.push(outlier); 
-            outlier_queue_size++;
+            this->outlier_queue_size++;
         }
     }
     catch(exception& e) {
@@ -45,10 +45,10 @@ void EngineControlExecutor::shutdown() {
 }
 
 outlier_t EngineControlExecutor::fetch_outlier() {
-    if (!outlier_queue_size) return { No, 0 };
+    if (!this->outlier_queue_size) return { No, 0 };
     unique_lock<mutex> lk(this->outlier_queue_mutex);
     outlier_t outlier =  this->outlier_queue.front();
     this->outlier_queue.pop();
-    outlier_queue_size--;
+    this->outlier_queue_size--;
     return outlier;
 }
